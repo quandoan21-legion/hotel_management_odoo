@@ -13,4 +13,12 @@ class Room(models.Model):
     room_price = fields.Float(string='Room Price', required=True)
     room_status = fields.Selection([("available", "Available"), ("occupied", "Occupied")], string='Room Status',
                                    required=True)
-    room_description = fields.Many2many('hotels.room.description', string='Room Description')
+    room_description = fields.Many2many('hotels.room.description', string='Room Descriptions')
+
+    room_view = fields.Char(string="Room View", compute='_compute_room_view')
+
+    def _compute_room_view(self):
+        for room in self:
+            # Get the views for the room descriptions
+            views = room.room_description.mapped('view')
+            room.room_view = ", ".join(views)

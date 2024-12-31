@@ -8,6 +8,8 @@
                 <field name="room_id"/>
                 <field name="room_price"/>
                 <field name="room_status"/>
+                <field name="bed_type"/>
+                <field name="room_view"/>
                 <field name="hotel_id"/>
             </list>
         </field>
@@ -23,7 +25,7 @@
     </record>
 
     <!-- Menu Item for Hotel Management -->
-<!--    <menuitem id="menu_hotel_root" name="Hotel Management"/>-->
+    <!--    <menuitem id="menu_hotel_root" name="Hotel Management"/>-->
 
     <!-- Menu Item for Hotel Room List -->
     <menuitem id="menu_hotel_room_list"
