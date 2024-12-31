@@ -1,34 +1,30 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "hotel",
+    'name': "Hotel Management",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Manage hotels, rooms, and room descriptions",
 
     'description': """
-Long description of module's purpose
+        This module allows you to manage hotels, their rooms, and room descriptions.
     """,
 
-    'author': "My Company",
+    'author': "Your Company",
     'website': "https://www.yourcompany.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
+    'category': 'Management',
+    'version': '1.0',
 
-    # any module necessary for this one to work correctly
     'depends': ['base'],
 
-    # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/hotel_room_list_views.xml',
-        'views/templates.xml',
+        # 'views/hotel_room_form_views.xml',
+        'views/hotel_views.xml',
+        # 'views/room_description_views.xml',
     ],
-    # only loaded in demonstration mode
+
     'demo': [
         'demo/demo.xml',
     ],
 }
-
