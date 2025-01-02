@@ -1,0 +1,29 @@
+/* Sea View Description */
+.room_description_sea_view {
+    background-color: #1e90ff; /* Blue */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* City View Description */
+.room_description_city_view {
+    background-color: #ffd700; /* Gold */
+    color: black;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Garden View Description */
+.room_description_garden_view {
+    background-color: #228b22; /* Forest Green */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Zen View Description */
+.ro

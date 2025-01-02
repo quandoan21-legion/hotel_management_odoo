@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Add a new field in the hotel list view -->
+        <record id="hotel_order_form_view" model="ir.ui.view">
+            <field name="name">hotel.order.form</field>
+            <field name="model">hotels.room.order</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="customer_name"/>
+                            <field name="check_in_date"/>
+                            <field name="check_out_date"/>
+                            <field name="room_id"  domain="[('room_status', '=', 'available')]"/>
+                            <field name="order_status"/>
+                            <field name="room_price"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hotel_orders_form" model="ir.actions.act_window">
+            <field name="name">Hotel Orders</field>
+            <field name="res_model">hotels.room.order</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hotel_order_form_view"/>
+            <field name="target">current</field>
+        </record>
+    </data>
+</odoo>

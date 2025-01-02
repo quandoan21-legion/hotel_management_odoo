@@ -1,0 +1,22 @@
+<odoo>
+    <!-- Root Menu for Hotel Management -->
+    <menuitem id="menu_hotel_root" name="Hotel Management" sequence="1"/>
+
+    <!-- Submenu for Hotels List -->
+    <menuitem id="menu_hotels_list_root"
+              name="Hotels Management"
+              action="action_hotels_list"
+              parent="menu_hotel_root" sequence="10"/>
+
+    <!-- Submenu for Hotel Room List -->
+    <menuitem id="menu_hotel_room_list_root"
+              name="Hotel Rooms Management"
+              action="action_hotel_room_list"
+              parent="menu_hotel_root" sequence="20"/>
+
+    <!-- Submenu for Hotel Orders Management -->
+    <menuitem id="menu_hotel_orders_list_root"
+              name="Hotel Orders Management"
+              action="action_hotel_orders_list"
+              parent="menu_hotel_root" sequence="30"/>
+</odoo>

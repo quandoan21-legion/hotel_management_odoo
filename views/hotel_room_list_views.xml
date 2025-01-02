@@ -5,63 +5,22 @@
         <field name="model">hotels.room</field>
         <field name="arch" type="xml">
             <list string="Rooms">
-                <field name="room_id"/>
                 <field name="room_price"/>
                 <field name="room_status"/>
+                <field name="room_description" widget="many2many_tags"/>
                 <field name="bed_type"/>
-                <field name="room_view"/>
                 <field name="hotel_id"/>
             </list>
         </field>
     </record>
 
-    <record id="view_hotel_room_form" model="ir.ui.view">
-        <field name="name">hotel.room.form</field>
-        <field name="model">hotels.room</field>
-        <field name="arch" type="xml">
-            <form string="Room">
-                <sheet>
-                    <group>
-                        <field name="room_id"/>
-                        <field name="hotel_id"/>
-                        <field name="hotel_address" readonly="1"/>
-                        <field name="bed_type"/>
-                        <field name="room_price"/>
-                        <field name="room_status"/>
-                        <field name="room_description"/>
-                        <field name="room_view"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
     <!-- Action for Hotel Room List View -->
     <record id="action_hotel_room_list" model="ir.actions.act_window">
-        <field name="name">Hotel Rooms (LIST)</field>
+        <field name="name">Hotel Rooms</field>
         <field name="res_model">hotels.room</field>
-        <field name="view_mode">list, form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_hotel_room_list"/>
+        <field name="search_view_id" ref="view_hotel_room_search"/>
         <field name="target">current</field>
     </record>
-
-
-    <!-- Action for Hotel Room Form View -->
-    <record id="action_hotel_room_form" model="ir.actions.act_window">
-        <field name="name">Hotel Room</field>
-        <field name="res_model">hotels.room</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_hotel_room_form"/>
-        <field name="target">current</field>
-    </record>
-
-    <!-- Menu Item for Hotel Room Form -->
-    <menuitem id="menu_hotel_room_form"
-              name="Hotel Room (FORM VIEW)"
-              action="action_hotel_room_form"/>
-
-    <!-- Menu Item for Hotel Room List -->
-    <menuitem id="menu_hotel_room_list"
-              name="Hotel Rooms (LIST VIEW)"
-              action="action_hotel_room_list"/>
 </odoo>

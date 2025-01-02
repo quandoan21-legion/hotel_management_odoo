@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Add a new field in the hotel list view -->
+        <record id="hotel_form_view" model="ir.ui.view">
+            <field name="name">hotel.form</field>
+            <field name="model">hotels.hotel</field>
+            <field name="arch" type="xml">
+                <form string="Hotel">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="floors"/>
+                            <field name="rooms"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_hotels_form" model="ir.actions.act_window">
+            <field name="name">Hotel Management</field>
+            <field name="res_model">hotels.hotel</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hotel_form_view"/>
+            <field name="target">current</field>
+        </record>
+    </data>
+</odoo>

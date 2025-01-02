@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <!-- Search view definition -->
+        <record id="view_hotel_room_search" model="ir.ui.view">
+            <field name="name">hotel.room.search</field>
+            <field name="model">hotels.room</field>
+            <field name="arch" type="xml">
+                <search string="Search Hotel Rooms">
+                    <!-- Search fields -->
+                    <field name="hotel_id" string="Hotel"/>
+                    <field name="room_status" string="Room Status"/>
+
+                    <!-- Filters for Room Status -->
+                    <group string="Filters">
+                        <filter string="Available Rooms" name="available_rooms"
+                                domain="[('room_status', '=', 'available')]"/>
+                        <filter string="Occupied Rooms" name="occupied_rooms"
+                                domain="[('room_status', '=', 'occupied')]"/>
+                    </group>
+                    <group string="Price">
+                        <filter string="Price &lt; 1000" name="smaller_than_1k" domain="[('room_price', '&lt;', 1000.00)]"/>
+                        <filter string="Price &gt; 1000" name="greater_than_1k" domain="[('room_price', '>', 1000.00)]"/>
+                    </group>
+
+                    <!-- Group by Room Status -->
+                    <group string="Group By">
+                        <filter name="group_by_status" string="Room Status" domain="[]"
+                                context="{'group_by': 'room_status'}"/>
+                        <filter name="group_by_description" string="Room Description" domain="[]"
+                                context="{'group_by': 'room_description'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

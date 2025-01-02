@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="assets_backend" name="hotel assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!-- Link the custom CSS file -->
+                <link rel="stylesheet" type="text/css" href="/hotel/static/src/css/styles.css"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

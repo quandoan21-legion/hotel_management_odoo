@@ -1,0 +1,16 @@
+<odoo>
+    <data noupdate="1">
+        <record id="room_description_sea_view" model="hotels.room.description">
+            <field name="view">Sea View</field>
+        </record>
+        <record id="room_description_city_view" model="hotels.room.description">
+            <field name="view">City View</field>
+        </record>
+        <record id="room_description_garden_view" model="hotels.room.description">
+            <field name="view">Garden View</field>
+        </record>
+         <record id="room_description_zen_view" model="hotels.room.description">
+            <field name="view">Zen View</field>
+        </record>
+    </data>
+</odoo>

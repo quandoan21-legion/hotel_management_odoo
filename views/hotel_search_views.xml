@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hotel_search_view" model="ir.ui.view">
+            <field name="name">hotel.search</field>
+            <field name="model">hotels.hotel</field>
+            <field name="arch" type="xml">
+                <search string="Search Hotels">
+                    <field name="name" string="Hotel Name"/>
+                    <field name="address" string="Hotel Address"/>
+                    <field name="floors" string="Number of Floors"/>
+                    <field name="rooms" string="Number of Rooms"/>
+
+                    <group string="Filters">
+                        <filter string="&lt; 100 Floors" name="smaller_than_100"
+                                domain="[('floors', '&lt;', 100)]"/>
+                        <filter string="&gt; 100 Floors" name="greater_than_100"
+                                domain="[('floors', '&gt;', 100)]"/>
+                    </group>
+                    <group string="Group By">
+                        <filter name="group_by_location" string="Hà Nội" domain="[('address', 'ilike', 'hanoi'), ('address', 'ilike', 'ha noi'), ('address', 'ilike', 'hn')]"
+                                context="{'group_by': 'address'}"/>
+                        <filter name="group_by_location" string="HCMC" domain="[('address', 'ilike', 'hochiminh'), ('address', 'ilike', 'ho chi minh'), ('address', 'ilike', 'HCM')]"
+                                context="{'group_by': 'address'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>
