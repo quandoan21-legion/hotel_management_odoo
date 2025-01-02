@@ -5,25 +5,45 @@ My Hotel Management is an Odoo module designed to manage hotel rooms, orders, an
 
 ##Folder Structure
 ```plaintext
-myhotel/
-├── __init__.py
-├── __manifest__.py
-├── models/
-│   ├── __init__.py
-│   ├── hotel.py
-│   ├── room.py
-│   ├── room_description.py
-│   ├── room_order.py
-└── views/
-    ├── hotel_views.xml
-    ├── room_views.xml
-    ├── room_description_views.xml
-    ├── room_order_views.xml
+hotel/
+ ├── __init__.py
+ ├── __manifest__.py
+ ├── models/
+ │   ├── __init__.py
+ │   ├── hotel.py
+ │   ├── room.py
+ │   ├── room_description.py
+ │   ├── room_order.py
+ ├── views/
+ │   ├── hotel_views.xml
+ │   ├── room_views.xml
+ │   ├── room_description_views.xml
+ │   ├── room_order_views.xml
+ │   ├── hotel_search_views.xml
+ │   ├── hotel_room_search_views.xml
+ │   ├── hotel_room_list_views.xml
+ │   ├── hotel_order_list_views.xml
+ │   ├── hotel_order_form_views.xml
+ │   ├── hotel_form_views.xml
+ │   ├── hotel_list_views.xml
+ │   ├── hotel_room_form_views.xml
+ │   ├── menus.xml
+ ├── data/
+ │   ├── hotel_room_descriptions_data.xml
+ ├── security/
+ │   ├── ir.model.access.csv
+ ├── static/
+ │   ├── css/
+ │   │   ├── style.css
+ ├── demo/
+ │   ├── demo.xml
+ ├── README.md
 ```
 
 ## __Manifest__.py file 
 ```
 # -*- coding: utf-8 -*-
+# noinspection PyStatementEffect
 {
     'name': "Hotel Management",
 
@@ -42,17 +62,31 @@ myhotel/
     'depends': ['base'],
 
     'data': [
+        'data/hotel_room_descriptions_data.xml',
         'security/ir.model.access.csv',
+        'views/hotel_search_views.xml',
+        'views/hotel_room_search_views.xml',
         'views/hotel_room_list_views.xml',
+        'views/hotel_order_list_views.xml',
+        'views/hotel_order_form_views.xml',
+        'views/hotel_form_views.xml',
+        'views/hotel_list_views.xml',
         'views/hotel_room_form_views.xml',
-        'views/hotel_views.xml',
-        'views/room_description_views.xml',
+        'views/menus.xml',
+        # 'views/hotel_views.xml',
+        # 'views/room_description_views.xml',
     ],
 
+'assets': {
+        'web.assets_backend': [
+            'hotel/static/css/style.css',  # Add your CSS here
+        ],
+    },
     'demo': [
         'demo/demo.xml',
     ],
 }
+
 ```
 
 ## Features
