@@ -98,7 +98,7 @@ hotel/
 ## Installation
 1. Clone the repository into your Odoo addons directory:
     ```bash
-    git clone <repository_url> addons/hotel
+    git clone https://github.com/quandoan21-legion/hotel_management_odoo addons/hotel
     ```
 2. Update the Odoo module list:
     ```bash
