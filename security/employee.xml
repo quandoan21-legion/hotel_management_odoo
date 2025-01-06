@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="module_category_user_management" model="ir.module.category">
+            <field name="name">Hotel Employee</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <!-- Create Employee Group -->
+        <record id="group_employee" model="res.groups">
+            <field name="name">Employee</field>
+            <field name="category_id" ref="module_category_user_management"/>
+        </record>
+
+    </data>
+</odoo>

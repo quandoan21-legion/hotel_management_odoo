@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hotels_hotel,hotels.hotel,model_hotels_hotel,,1,1,1,1
+access_hotels_hotel,hotels.hotel,model_hotels_hotel,group_employee,1,0,0,0
+access_hotels_hotel,hotels.hotel,model_hotels_hotel,group_manager,1,1,1,1
 access_hotels_room,hotels.room,model_hotels_room,,1,1,1,1
 access_hotels_room_description,hotels.room.description,model_hotels_room_description,,1,1,1,1
 access_hotels_room_order,hotels.room.order,model_hotels_room_order,,1,1,1,1
