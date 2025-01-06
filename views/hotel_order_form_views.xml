@@ -12,7 +12,8 @@
                             <field name="customer_name"/>
                             <field name="check_in_date"/>
                             <field name="check_out_date"/>
-                            <field name="room_id"  domain="[('room_status', '=', 'available')]"/>
+                            <field name="room_id" domain="[('room_status', '=', 'available')]"/>
+                            <field name="room_name" />
                             <field name="order_status"/>
                             <field name="room_price"/>
                         </group>

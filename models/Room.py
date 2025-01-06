@@ -5,6 +5,7 @@ class Room(models.Model):
     _name = 'hotels.room'
     _description = 'Room description'
 
+    room_name = fields.Char(string='Room Name')
     hotel_id = fields.Many2one('hotels.hotel', string='Hotel', required=True)
     hotel_address = fields.Char(related='hotel_id.address', string='Hotel Address')
     bed_type = fields.Selection([("single", "Single"), ("double", "Double")], string='Bed Type',

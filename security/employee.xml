@@ -1,5 +1,6 @@
 <odoo>
     <data>
+        <!-- Create Module Category for Hotel Employee -->
         <record id="module_category_user_management" model="ir.module.category">
             <field name="name">Hotel Employee</field>
             <field name="sequence">1</field>
@@ -11,5 +12,12 @@
             <field name="category_id" ref="module_category_user_management"/>
         </record>
 
+        <!-- Record Rule to Allow Employees to Access Only Hotels They Created -->
+        <record id="hotel_employee_access_rule" model="ir.rule">
+            <field name="name">Access Hotels Created by Employee</field>
+            <field name="model_id" ref="model_hotels_room_order"/>
+            <field name="groups" eval="[(4, ref('group_employee'))]"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
     </data>
 </odoo>
