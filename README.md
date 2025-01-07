@@ -5,39 +5,34 @@ My Hotel Management is an Odoo module designed to manage hotel rooms, orders, an
 
 ##Folder Structure
 ```plaintext
-hotel/
- ├── __init__.py
- ├── __manifest__.py
- ├── models/
- │   ├── __init__.py
- │   ├── hotel.py
- │   ├── room.py
- │   ├── room_description.py
- │   ├── room_order.py
- ├── views/
- │   ├── hotel_views.xml
- │   ├── room_views.xml
- │   ├── room_description_views.xml
- │   ├── room_order_views.xml
- │   ├── hotel_search_views.xml
- │   ├── hotel_room_search_views.xml
- │   ├── hotel_room_list_views.xml
- │   ├── hotel_order_list_views.xml
- │   ├── hotel_order_form_views.xml
- │   ├── hotel_form_views.xml
- │   ├── hotel_list_views.xml
- │   ├── hotel_room_form_views.xml
- │   ├── menus.xml
- ├── data/
- │   ├── hotel_room_descriptions_data.xml
- ├── security/
- │   ├── ir.model.access.csv
- ├── static/
- │   ├── css/
- │   │   ├── style.css
- ├── demo/
- │   ├── demo.xml
- ├── README.md
+addons/
+└── hotel/
+    ├── __init__.py
+    ├── __manifest__.py
+    ├── models/
+    │   ├── __init__.py
+    │   ├── hotel.py
+    │   ├── room.py
+    │   ├── room_description.py
+    │   └── room_order.py
+    ├── views/
+    │   ├── __init__.py
+    │   ├── hotel_views.xml
+    │   ├── room_views.xml
+    │   ├── room_description_views.xml
+    │   ├── room_order_views.xml
+    │   └── menus.xml
+    ├── security/
+    │   ├── __init__.py
+    │   ├── ir.model.access.csv
+    │   ├── employee.xml
+    │   └── custom_user.xml
+    └── data/
+        ├── __init__.py
+        ├── hotel_data.xml
+        ├── room_data.xml
+        ├── room_description_data.xml
+        └── room_order_data.xml
 ```
 
 ## __Manifest__.py file 

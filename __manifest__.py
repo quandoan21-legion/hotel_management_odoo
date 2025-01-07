@@ -21,6 +21,7 @@
         'data/hotel_room_descriptions_data.xml',
         'security/employee.xml',
         'security/manager.xml',
+        'security/custom_user.xml',
         'security/ir.model.access.csv',
         'views/hotel_search_views.xml',
         'views/hotel_room_search_views.xml',

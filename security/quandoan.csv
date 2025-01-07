@@ -1,0 +1,2 @@
+id,name,model_id/id,groups/id,domain_force,perm_read,perm_write,perm_create,perm_unlink
+security_rule_sales_order,Sales Order Access Rule,model_sales_order,base.group_sales_manager,"[('user_id', '=', user.id)]",True,False,False,False

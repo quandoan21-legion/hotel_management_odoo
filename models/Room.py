@@ -5,7 +5,7 @@ class Room(models.Model):
     _name = 'hotels.room'
     _description = 'Room description'
 
-    room_name = fields.Char(string='Room Name')
+    name = fields.Char(string='Room Name')
     hotel_id = fields.Many2one('hotels.hotel', string='Hotel', required=True)
     hotel_address = fields.Char(related='hotel_id.address', string='Hotel Address')
     bed_type = fields.Selection([("single", "Single"), ("double", "Double")], string='Bed Type',
@@ -15,3 +15,9 @@ class Room(models.Model):
                                    required=True)
     room_description = fields.Many2many('hotels.room.description', string='Room Descriptions')
 
+    def name_get(self):
+        result = []
+        for room in self:
+            # Use the room_name as the display name in Many2one field
+            result.append((room.id, room.room_name))
+        return result

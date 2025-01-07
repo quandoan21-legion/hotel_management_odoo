@@ -8,18 +8,29 @@
             <field name="arch" type="xml">
                 <form string="Hotel">
                     <sheet>
+                        <!-- Grouping fields into logical sections for better structure -->
                         <group>
-                            <field name="name"/>
-                            <field name="address"/>
-                            <field name="floors"/>
-                            <field name="rooms"/>
+                            <group string="Hotel Details">
+                                <field name="name" placeholder="Enter hotel name"/>
+                                <field name="address" placeholder="Enter hotel address"/>
+                            </group>
+                        </group>
+
+                        <!-- Group related to floors and rooms -->
+                        <group>
+                            <group string="Hotel Facilities">
+                                <field name="floors" placeholder="Number of floors"/>
+                                <field name="rooms" placeholder="Number of rooms"/>
+                            </group>
                         </group>
                     </sheet>
+
+
                 </form>
             </field>
         </record>
 
-
+        <!-- Action to open the form view -->
         <record id="action_hotels_form" model="ir.actions.act_window">
             <field name="name">Hotel Management</field>
             <field name="res_model">hotels.hotel</field>

@@ -1,5 +1,6 @@
 <odoo>
     <data>
+
         <!-- Create Module Category for Hotel Employee -->
         <record id="module_category_user_management" model="ir.module.category">
             <field name="name">Hotel Employee</field>
@@ -10,6 +11,7 @@
         <record id="group_employee" model="res.groups">
             <field name="name">Employee</field>
             <field name="category_id" ref="module_category_user_management"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_portal'))]"/>
         </record>
 
         <!-- Record Rule to Allow Employees to Access Only Hotels They Created -->

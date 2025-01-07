@@ -11,10 +11,16 @@ class RoomOrder(models.Model):
     check_in_date = fields.Date(string='Check In Date', required=True, default=lambda self: date.today())
     check_out_date = fields.Date(string='Check Out Date', required=True)
     room_id = fields.Many2one('hotels.room', string='Room', required=True)
-    room_name = fields.Char(related='room_id.room_name', required=True)
     order_status = fields.Selection(
         [('confirmed', 'Confirmed'), ('new', 'New')], string='Order Status', required=True, default='new')
     room_price = fields.Float(related='room_id.room_price', string='Room Price')
+
+
+    @api.depends('room_id')
+    def _compute_room_feature(self):
+        for order in self:
+            if order.room_id:
+                order.room_name= order.room_id.room_name
 
     @api.constrains('check_out_date', 'check_in_date')
     def _check_dates(self):

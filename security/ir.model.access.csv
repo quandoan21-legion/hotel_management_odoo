@@ -3,9 +3,6 @@ access_hotels_room_employee,hotels.room.employee,model_hotels_room,group_employe
 access_hotels_hotel_employee,hotels.hotel.employee,model_hotels_hotel,group_employee,1,0,0,0
 access_hotels_room_description_employee,hotels.room.description.employee,model_hotels_room_description,group_employee,1,1,1,0
 access_hotels_room_order_employee,hotels.room.order.employee,model_hotels_room_order,group_employee,1,1,1,0
-
-
-
 access_hotels_hotel,hotels.hotel,model_hotels_hotel,group_manager,1,1,1,1
 access_hotels_room,hotels.room,model_hotels_room,group_manager,1,1,1,1
 access_hotels_room_description,hotels.room.description,model_hotels_room_description,group_manager,1,1,1,1

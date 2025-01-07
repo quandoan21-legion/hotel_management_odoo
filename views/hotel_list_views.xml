@@ -2,12 +2,12 @@
 <odoo>
     <data>
 
-        <!-- Add a new field in the hotel list view -->
+        <!-- Define the list view for displaying hotels -->
         <record id="hotel_list_view" model="ir.ui.view">
             <field name="name">hotel.list</field>
             <field name="model">hotels.hotel</field>
             <field name="arch" type="xml">
-                <list>
+                <list string="Hotel List">
                     <field name="name"/>
                     <field name="address"/>
                     <field name="floors"/>
@@ -16,13 +16,15 @@
             </field>
         </record>
 
+        <!-- Define the action to open the hotel list view -->
         <record id="action_hotels_list" model="ir.actions.act_window">
             <field name="name">Hotel Names</field>
             <field name="res_model">hotels.hotel</field>
             <field name="view_mode">list,form</field>
             <field name="view_id" ref="hotel_list_view"/>
-            <field name="search_view_id" ref="hotel_search_view"/>
+            <field name="search_view_id" ref="hotel_search_view"/> <!-- Correct reference -->
             <field name="target">current</field>
         </record>
+
     </data>
 </odoo>

@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+
+        <record id="group_custom_user_type" model="res.groups">
+            <field name="name">Custom User Type</field>
+            <field name="category_id" ref="module_category_user_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_manager'))]"/>
+        </record>
+    </data>
+</odoo>
