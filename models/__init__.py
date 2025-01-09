@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import Hotel,Room, RoomOrder, RoomDescription
+from . import Hotel,Room, RoomOrder, RoomDescription, ResUserExtend

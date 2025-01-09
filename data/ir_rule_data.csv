@@ -1,0 +1,2 @@
+id,name,model_id:id,domain_force,groups:id,perm_read,perm_write,perm_create,perm_unlink
+hotel_access_based_on_assignment,Hotel Access Based on Assignment,model_hotels_hotel,"[('assigned_users', 'in', user.id), ('groups_id', 'in', [ref('base.group_employee')])]",base.group_employee,1,0,0,0

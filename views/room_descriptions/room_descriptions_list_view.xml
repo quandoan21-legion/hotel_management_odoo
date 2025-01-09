@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Room Description Form View -->
+        <record id="view_room_description_form" model="ir.ui.view">
+            <field name="name">room.description.form</field>
+            <field name="model">hotels.room.description</field>
+            <field name="arch" type="xml">
+                <form string="Room Description">
+                    <sheet>
+                        <group>
+                            <field name="view" placeholder="Enter room view" required="1"/>
+                        </group>
+                        <group>
+                            <field name="name" readonly="1" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Room Description Tree View (List) -->
+        <record id="view_room_description_tree" model="ir.ui.view">
+            <field name="name">room.description.tree</field>
+            <field name="model">hotels.room.description</field>
+            <field name="arch" type="xml">
+                <list string="Room Descriptions">
+                    <field name="view"/>
+                    <field name="name"/>
+                </list>
+            </field>
+        </record>
+
+
+
+        <!-- Action to open the room description views -->
+        <record id="action_room_description" model="ir.actions.act_window">
+            <field name="name">Room Descriptions</field>
+            <field name="res_model">hotels.room.description</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="view_room_description_tree"/>
+        </record>
+    </data>
+</odoo>

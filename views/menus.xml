@@ -19,4 +19,11 @@
               name="Hotel Orders Management"
               action="action_hotel_orders_list"
               parent="menu_hotel_root" sequence="30"/>
+
+    <!-- Menu Item for Room Description -->
+        <menuitem id="menu_room_description"
+                  name="Room Descriptions"
+                  parent="menu_hotel_root"
+                  action="action_room_description"
+                  sequence="40"/>
 </odoo>

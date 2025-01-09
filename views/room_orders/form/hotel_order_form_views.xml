@@ -10,11 +10,10 @@
                     <sheet>
                         <group>
                             <field name="customer_name"/>
-                            <field name="room_id" />
+                            <field name="room_id" domain="[('room_status', '=', 'available')]"/>
                             <field name="check_in_date"/>
                             <field name="check_out_date"/>
-                            <field name="room_id" domain="[('room_status', '=', 'available')]"/>
-                            <field name="order_status"/>
+                            <field name="order_status" groups="hotel.group_manager"/>
                             <field name="room_price"/>
                         </group>
                     </sheet>

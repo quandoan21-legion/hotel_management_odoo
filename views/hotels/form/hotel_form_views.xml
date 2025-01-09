@@ -13,6 +13,8 @@
                             <group string="Hotel Details">
                                 <field name="name" placeholder="Enter hotel name"/>
                                 <field name="address" placeholder="Enter hotel address"/>
+                                <!-- Corrected domain to filter users based on the manager group -->
+                                <field name="manager_id" />
                             </group>
                         </group>
 
@@ -23,9 +25,12 @@
                                 <field name="rooms" placeholder="Number of rooms"/>
                             </group>
                         </group>
+                         <group>
+                            <group string="Hotel Personal">
+                                <field name="assigned_users"/>
+                            </group>
+                        </group>
                     </sheet>
-
-
                 </form>
             </field>
         </record>
