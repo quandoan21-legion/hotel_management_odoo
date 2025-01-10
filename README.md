@@ -5,34 +5,52 @@ My Hotel Management is an Odoo module designed to manage hotel rooms, orders, an
 
 ##Folder Structure
 ```plaintext
-addons/
-└── hotel/
-    ├── __init__.py
-    ├── __manifest__.py
-    ├── models/
-    │   ├── __init__.py
-    │   ├── hotel.py
-    │   ├── room.py
-    │   ├── room_description.py
-    │   └── room_order.py
-    ├── views/
-    │   ├── __init__.py
-    │   ├── hotel_views.xml
-    │   ├── room_views.xml
-    │   ├── room_description_views.xml
-    │   ├── room_order_views.xml
-    │   └── menus.xml
-    ├── security/
-    │   ├── __init__.py
-    │   ├── ir.model.access.csv
-    │   ├── employee.xml
-    │   └── custom_user.xml
-    └── data/
-        ├── __init__.py
-        ├── hotel_data.xml
-        ├── room_data.xml
-        ├── room_description_data.xml
-        └── room_order_data.xml
+hotel/
+├── __init__.py
+├── __manifest__.py
+├── data/
+│   └── hotel_room_descriptions_data.xml
+├── security/
+│   ├── admin.xml
+│   ├── employee.xml
+│   ├── ir.model.access.csv
+│   └── manager.xml
+├── views/
+│   ├── hotels/
+│   │   ├── form/
+│   │   │   └── hotel_form_views.xml
+│   │   ├── list/
+│   │   │   └── hotel_list_views.xml
+│   │   └── search/
+│   │       └── hotel_search_views.xml
+│   ├── menus.xml
+│   ├── notification/
+│   │   └── notify.xml
+│   ├── room_descriptions/
+│   │   └── room_descriptions_list_view.xml
+│   ├── room_orders/
+│   │   ├── form/
+│   │   │   └── hotel_order_form_views.xml
+│   │   ├── list/
+│   │   │   └── hotel_order_list_views_filtered.xml
+│   │   ├── search/
+│   │   │   └── hotel_order_search_views.xml
+│   │   └── server_action/
+│   │       └── hotel_order_server_action.xml
+│   │   └── window_action/
+│   │       └── hotel_order_action_window.xml
+│   ├── rooms/
+│   │   ├── form/
+│   │   │   └── hotel_room_form_views.xml
+│   │   ├── list/
+│   │   │   └── hotel_room_list_views.xml
+│   │   └── search/
+│   │       └── hotel_room_search_views.xml
+├── static/
+│   └── css/
+│       └── style.css
+└── demo/
+    └── demo.xml
 ```
 
 ## __Manifest__.py file 

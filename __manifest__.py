@@ -27,7 +27,6 @@
         'views/hotels/search/hotel_search_views.xml',
         'views/rooms/search/hotel_room_search_views.xml',
         'views/rooms/list/hotel_room_list_views.xml',
-        # 'views/room_orders/list/hotel_order_list_views.xml',
         'views/room_orders/search/hotel_order_search_views.xml',
         'views/room_orders/list/hotel_order_list_views_filtered.xml',
         'views/room_orders/form/hotel_order_form_views.xml',
@@ -36,12 +35,8 @@
         'views/rooms/form/hotel_room_form_views.xml',
         'views/room_descriptions/room_descriptions_list_view.xml',
         'views/notification/notify.xml',
-        # 'views/email_template.xml',
-        # 'views/server_action.xml',
         'views/room_orders/window_action/hotel_order_action_window.xml',
         'views/menus.xml',
-        # 'views/hotel_views.xml',
-        # 'views/room_description_views.xml',
     ],
 
 'assets': {
