@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <!-- Action to filter hotel orders with 'new' status -->
+        <record id="action_hotel_orders_list_filtered" model="ir.actions.act_window">
+            <field name="name">Hotel Orders</field>
+            <field name="res_model">hotels.room.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="hotel_order_list_view"/>
+            <field name="search_view_id" ref="hotel_room_order_search_view"/> <!-- Link to your search view -->
+            <field name="target">current</field>
+            <field name="domain">[]</field> <!-- No pre-filter applied -->
+            <field name="context">{"search_default_filter_status_new": 1}</field> <!-- Activates the filter -->
+        </record>
+    </data>
+</odoo>

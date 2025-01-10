@@ -1,8 +1,0 @@
-<record id="server_action_send_order_email" model="ir.actions.server">
-    <field name="name">Send Order Email</field>
-    <field name="model_id" ref="model_hotels_room_order"/>
-    <field name="state">code</field>
-    <field name="code">
-        action = model.env['mail.template'].browse(ref('hotel.email_template_order_created')).send_mail(record.id, force_send=True)
-    </field>
-</record>

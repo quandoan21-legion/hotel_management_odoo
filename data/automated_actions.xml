@@ -1,9 +1,0 @@
-<odoo>
-    <!-- Automated Action to Trigger the Server Action -->
-    <record id="automated_action_send_email_on_order_creation" model="base.automation">
-        <field name="name">Send Email on Order Creation</field>
-        <field name="model_id" ref="model_hotels_room_order"/>
-        <field name="trigger">on_create</field>
-        <field name="action_id" ref="your_module.server_action_send_order_email"/>
-    </record>
-</odoo>

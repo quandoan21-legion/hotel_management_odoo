@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hotel_room_order_search_view" model="ir.ui.view">
+            <field name="name">Hotel Room Order Filter</field>
+            <field name="model">hotels.room.order</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group string="Filters">
+                        <filter string="Order Status New"
+                                name="filter_status_new"
+                                domain="[('order_status', '=', 'new')]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

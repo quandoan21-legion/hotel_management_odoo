@@ -31,8 +31,6 @@
             </field>
         </record>
 
-
-
         <!-- Action to open the room description views -->
         <record id="action_room_description" model="ir.actions.act_window">
             <field name="name">Room Descriptions</field>

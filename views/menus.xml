@@ -17,7 +17,7 @@
     <!-- Submenu for Hotel Orders Management -->
     <menuitem id="menu_hotel_orders_list_root"
               name="Hotel Orders Management"
-              action="action_hotel_orders_list"
+              action="action_hotel_orders_list_filtered"
               parent="menu_hotel_root" sequence="30"/>
 
     <!-- Menu Item for Room Description -->

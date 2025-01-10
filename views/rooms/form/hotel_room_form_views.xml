@@ -13,6 +13,7 @@
                         <field name="room_price"/>
                         <field name="room_status"/>
                         <field name="room_description"/>
+                        <field name="last_rent_date"/>
                     </group>
                 </sheet>
             </form>

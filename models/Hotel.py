@@ -42,3 +42,11 @@ class Hotel(models.Model):
                     raise ValidationError(
                         f"The selected employee ({record.manager_id.name}) does not have an associated user."
                     )
+
+    @api.constrains('floors', 'rooms')
+    def _check_positive_values(self):
+        for record in self:
+            if record.floors < 0:
+                raise ValidationError("The number of floors must be a non-negative value.")
+            if record.rooms < 0:
+                raise ValidationError("The number of rooms must be a non-negative value.")

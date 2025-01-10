@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <!-- Group: Hotel Manager -->
-        <record id="group_hotel_manager" model="res.groups">
+        <record id="group_manager" model="res.groups">
             <field name="name">Hotel Manager</field>
             <field name="category_id" ref="module_category_user_management"/>
             <field name="implied_ids" eval="[(4, ref('group_employee'))]"/> <!-- Inherits from Employee group -->
@@ -9,26 +9,39 @@
 
         <!-- Record Rule: Hotel Manager Access to Assigned Hotels -->
         <record id="rule_hotel_manager_access_hotels" model="ir.rule">
-            <field name="name">Access to Assigned Hotels</field>
+            <field name="name">(Manager) Access to Assigned Hotels</field>
             <field name="model_id" ref="model_hotels_hotel"/>
             <field name="domain_force">[('manager_id.user_id', '=', user.id), ('assigned_users', 'in', [user.id])]</field>
-            <field name="groups" eval="[(4, ref('group_hotel_manager'))]"/> <!-- Apply to Hotel Manager group -->
+            <field name="groups" eval="[(4, ref('group_manager'))]"/> <!-- Apply to Hotel Manager group -->
             <field name="perm_read" eval="True"/> <!-- Allow reading -->
             <field name="perm_write" eval="False"/> <!-- Deny writing -->
             <field name="perm_create" eval="False"/> <!-- Deny creating -->
             <field name="perm_unlink" eval="False"/> <!-- Deny deleting -->
         </record>
 
-        <!-- Record Rule: Hotel Manager Access to Room Orders -->
-        <record id="rule_hotel_manager_access_orders" model="ir.rule">
-            <field name="name">Access to Room Orders</field>
+<!--        &lt;!&ndash; Record Rule: Hotel Manager Access to Room Orders &ndash;&gt;-->
+<!--        <record id="rule_hotel_manager_access_orders" model="ir.rule">-->
+<!--            <field name="name">(Manager) Access to Hotel's Room Orders</field>-->
+<!--            <field name="model_id" ref="model_hotels_room_order"/>-->
+<!--            <field name="domain_force">[('room_id.hotel_id.manager_id.user_id', '=', user.id)]</field>-->
+<!--            <field name="groups" eval="[(4, ref('group_manager'))]"/> &lt;!&ndash; Apply to Hotel Manager group &ndash;&gt;-->
+<!--            <field name="perm_read" eval="True"/> &lt;!&ndash; Allow reading &ndash;&gt;-->
+<!--            <field name="perm_write" eval="True"/> &lt;!&ndash; Deny writing &ndash;&gt;-->
+<!--            <field name="perm_create" eval="True"/> &lt;!&ndash; Deny creating &ndash;&gt;-->
+<!--            <field name="perm_unlink" eval="False"/> &lt;!&ndash; Deny deleting &ndash;&gt;-->
+<!--        </record>-->
+
+
+
+        <record id="rule_order_access_creator" model="ir.rule">
+            <field name="name">(manager) Access Hotel's Orders Created by Employee </field>
             <field name="model_id" ref="model_hotels_room_order"/>
-            <field name="domain_force">[('room_id.hotel_id.manager_id.user_id', '=', user.id)]</field>
-            <field name="groups" eval="[(4, ref('group_hotel_manager'))]"/> <!-- Apply to Hotel Manager group -->
-            <field name="perm_read" eval="True"/> <!-- Allow reading -->
-            <field name="perm_write" eval="False"/> <!-- Deny writing -->
-            <field name="perm_create" eval="False"/> <!-- Deny creating -->
-            <field name="perm_unlink" eval="False"/> <!-- Deny deleting -->
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_manager'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
     </data>
 </odoo>

@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <!-- Define the custom list view for hotel orders -->
+        <record id="hotel_order_list_view" model="ir.ui.view">
+            <field name="name">hotel.order.list</field>
+            <field name="model">hotels.room.order</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="customer_name"/>
+                    <field name="check_in_date"/>
+                    <field name="check_out_date"/>
+                    <field name="room_id"/>
+                    <field name="order_status"/>
+                    <field name="room_price"/>
+                    <header>
+                        <!-- Add the button to approve selected orders in the header -->
+                        <button name="%(server_action_approve_orders)d" string="Approve Selected" type="action"
+                                class="btn-primary"/>
+                    </header>
+                </list>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>
