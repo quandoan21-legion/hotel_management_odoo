@@ -35,7 +35,9 @@
         'views/rooms/form/hotel_room_form_views.xml',
         'views/room_descriptions/room_descriptions_list_view.xml',
         'views/notification/notify.xml',
+        'views/room_orders/form/room_payment_wizard_form.xml',
         'views/room_orders/window_action/hotel_order_action_window.xml',
+        'views/rooms/cron/cron_check_last_time_room_rent.xml',
         'views/menus.xml',
     ],
 

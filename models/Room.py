@@ -1,6 +1,9 @@
 from datetime import timedelta
+from datetime import date
 
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
 
 class Room(models.Model):
     _name = 'hotels.room'
@@ -14,6 +17,9 @@ class Room(models.Model):
     room_price = fields.Float(string='Room Price', required=True)
     room_status = fields.Selection([("available", "Available"), ("occupied", "Occupied")], string='Room Status',
                                    required=True)
+
+    order_ids = fields.One2many("hotels.room.order", 'room_id')
+    weekend_rate = fields.Integer(string="Weekend rate(%)", required=True)
     room_description = fields.Many2many('hotels.room.description', string='Room Descriptions')
     last_rent_date = fields.Date(string="Last Rent Date")
 
@@ -29,3 +35,24 @@ class Room(models.Model):
         # Log room and hotel details
         for room in rooms:
             print(f"Room: {room.name}, Hotel: {room.hotel_id.name}, Last Rented Date: {room.last_rent_date}")
+
+    @api.depends('order_ids.check_in_date', 'order_ids.check_out_date')
+    def _check_availability(self):
+        today = date.today()
+        for record in self:
+            overlapping_bookings = self.env['hotels.room.order'].search([
+                ('room_id', '=', record.id),
+                ('check_in_date', '<=', today),
+                ('check_out_date', '>=', today),
+            ])
+
+            if overlapping_bookings:
+                record.room_status = 'occupied'
+            else:
+                record.room_status = 'available'
+
+    @api.constrains('weekend_rate')
+    def check_weekend_rate_is_valid(self):
+        for record in self:
+            if record.weekend_rate < 0:
+                raise ValidationError("The weekend rate value must be a positive number")

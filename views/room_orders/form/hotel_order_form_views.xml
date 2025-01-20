@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Add a new field in the hotel list view -->
+        <!-- Update the Hotel Order Form View -->
         <record id="hotel_order_form_view" model="ir.ui.view">
             <field name="name">hotel.order.form</field>
             <field name="model">hotels.room.order</field>
@@ -9,24 +9,38 @@
                 <form>
                     <sheet>
                         <group>
+                            <!-- Button for Thanh toán - Only visible when is_paid is 'not_paid' -->
+                            <button name="paid_order"
+                                    type="object"
+                                    string="Paid"
+                                    class="btn-success"
+                                    invisible="is_paid == 'paid'"
+                                    context="{'default_room_id': room_id, 'default_order_id': id}"/>
+                        </group>
+
+                        <!-- Existing customer and order fields -->
+                        <group name="order_info">
                             <field name="customer_name"/>
                             <field name="room_id" domain="[('room_status', '=', 'available')]"/>
                             <field name="check_in_date"/>
                             <field name="check_out_date"/>
                             <field name="order_status" groups="hotel.group_manager"/>
-                            <field name="room_price"/>
+                            <field name="total_room_price"/>
                         </group>
                     </sheet>
+
                 </form>
             </field>
         </record>
 
+        <!-- Action for Viewing Invoice -->
         <record id="action_hotel_orders_form" model="ir.actions.act_window">
             <field name="name">Hotel Orders</field>
             <field name="res_model">hotels.room.order</field>
-            <field name="view_mode">form</field>
+            <field name="view_mode">list,form</field>
             <field name="view_id" ref="hotel_order_form_view"/>
             <field name="target">current</field>
         </record>
+
     </data>
 </odoo>

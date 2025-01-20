@@ -5,6 +5,7 @@
         <field name="model">hotels.room</field>
         <field name="arch" type="xml">
             <list string="Rooms">
+                <field name="name"/>
                 <field name="room_price"/>
                 <field name="room_status"/>
                 <field name="room_description" widget="many2many_tags"/>

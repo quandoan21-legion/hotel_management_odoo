@@ -13,5 +13,6 @@ access_hotels_hotel_admin,hotels.hotel.admin,model_hotels_hotel,group_admin,1,1,
 access_hotels_room_admin,hotels.room.admin,model_hotels_room,group_admin,1,1,1,1
 access_hotels_room_description_admin,hotels.room.description.admin,model_hotels_room_description,group_admin,1,1,1,1
 access_hotels_room_order_admin,hotels.room.order.admin,model_hotels_room_order,group_admin,1,1,1,1
+access_hotels_room_payment_admin,hotels.room.payment.admin,model_hotels_room_payment_wizard,group_admin,1,1,1,1
 
 

@@ -5,22 +5,34 @@
         <field name="arch" type="xml">
             <form string="Room">
                 <sheet>
-                    <group>
-                        <field name="hotel_id"/>
-                        <field name="name"/>
-                        <field name="hotel_address" readonly="1"/>
-                        <field name="bed_type"/>
-                        <field name="room_price"/>
-                        <field name="room_status"/>
-                        <field name="room_description"/>
-                        <field name="last_rent_date"/>
+                    <group col="2">
+                        <group>
+                            <field name="hotel_id"/>
+                            <field name="name"/>
+                            <field name="hotel_address" readonly="1"/>
+                            <field name="bed_type"/>
+                        </group>
+                        <group>
+                            <field name="room_price"/>
+                            <field name="weekend_rate"/>
+                            <field name="room_status"/>
+                            <field name="last_rent_date"/>
+                        </group>
                     </group>
+                    <sheet>
+                        <notebook name="room_note_book">
+                            <page string="Additional Info">
+                                <group>
+                                    <field name="room_description"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Action for Hotel Room Form View -->
     <record id="action_hotel_room_form" model="ir.actions.act_window">
         <field name="name">Hotel Management</field>
         <field name="res_model">hotels.room</field>
@@ -28,6 +40,4 @@
         <field name="view_id" ref="view_hotel_room_form"/>
         <field name="target">current</field>
     </record>
-
-
 </odoo>

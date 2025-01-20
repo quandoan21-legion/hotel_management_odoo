@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_cron_check_rooms_not_rented" model="ir.cron">
+            <field name="name">Check Rooms Not Rented for 7 Days</field>
+            <field name="model_id" ref="model_hotels_room"/>
+            <field name="state">code</field>
+            <field name="code">
+                model.check_rooms_not_rented_7_days()
+            </field>
+            <field name="interval_number">1</field>  <!-- Run every day -->
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>
