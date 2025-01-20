@@ -1,5 +1,7 @@
-from datetime import date
+from datetime import date, timedelta
+
 from odoo import models, fields, api
+
 
 class RoomOrder(models.Model):
     _name = 'hotels.room.order'
@@ -29,20 +31,24 @@ class RoomOrder(models.Model):
         for order in self:
             order.write({'order_status': 'approved'})
 
-    @api.onchange('check_in_date', 'check_out_date')
-    def _calculate_total_room_price(self):
-        for record in self:
-            if record.check_in_date and record.check_out_date:
-                check_in = fields.Date.from_string(record.check_in_date)
-                check_out = fields.Date.from_string(record.check_out_date)
-                day_difference = (check_out - check_in).days
-                if day_difference > 0:
-                    record.total_room_price = day_difference * record.room_price
-                else:
-                    record.total_room_price = 0
-                    raise models.ValidationError("The Check Out Date must be later than the Check In Date.")
-            else:
-                record.total_room_price = 0
+    def calculate_day_different(self, check_in_date, check_out_date):
+        return (fields.Date.from_string(check_out_date) - fields.Date.from_string(check_in_date)).days + 1
+
+    def count_weekend_days(self):
+        weekend_count = 0
+        # Loop through each day in the range
+        current_date = self.check_in_date
+        while current_date <= self.check_out_date:
+            if current_date.weekday() == 5 or current_date.weekday() == 6:
+                weekend_count += 1
+            current_date += timedelta(days=1)
+        return weekend_count
+
+    def calculate_room_price_per_day(self, weekday_count, weekend_count, room_price):
+        total_room_price_weekday = weekday_count * room_price
+        total_room_price_weekend = weekend_count * (
+                room_price + (room_price / 100 * self.room_id.weekend_rate))
+        return total_room_price_weekday + total_room_price_weekend
 
     @api.model
     def create(self, vals):
@@ -86,3 +92,20 @@ class RoomOrder(models.Model):
                 # Ensure check_out_date is not earlier than check_in_date
                 if record.check_out_date < record.check_in_date:
                     raise models.ValidationError("The Check Out Date must not be earlier than the Check In Date.")
+
+    @api.onchange('check_in_date', 'check_out_date')
+    def _calculate_total_room_price(self):
+        for record in self:
+            if record.check_in_date and record.check_out_date:
+                day_difference = self.calculate_day_different(check_in_date=record.check_in_date,
+                                                              check_out_date=record.check_out_date)
+                weekend_count = self.count_weekend_days()
+                weekday_count = day_difference - weekend_count
+                if day_difference > 0:
+                    record.total_room_price = self.calculate_room_price_per_day(weekday_count, weekend_count,
+                                                                                record.room_price)
+                else:
+                    record.total_room_price = 0
+                    raise models.ValidationError("The Check Out Date must be later than the Check In Date.")
+            else:
+                record.total_room_price = 0
