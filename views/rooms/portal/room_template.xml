@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_rooms" name="My Rooms" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <div class="o_portal_category" t-if="rooms_count">
+                <h3>Rooms
+                    <small class="float-end">
+                        <t t-esc="rooms_count"/> Rooms
+                    </small>
+                </h3>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_rooms_list" name="Rooms List">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <h2>Available Rooms</h2>
+                <div class="row mt-4">
+                    <t t-if="rooms">
+                        <div class="col-12">
+                            <div class="row">
+                                <t t-foreach="rooms" t-as="room">
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <t t-esc="room.name"/>
+                                                </h5>
+                                                <p class="card-text">
+                                                    <strong>Price:</strong> <t t-esc="room.room_price"/> USD<br/>
+                                                    <strong>Bed Type:</strong> <t t-esc="room.bed_type"/><br/>
+                                                    <strong>Address:</strong> <t t-esc="room.hotel_address"/>
+                                                </p>
+                                                <a t-att-href="'/hotel/rooms/%s' % room.id" class="btn btn-primary">
+                                                    View Details
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                No available rooms at the moment.
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

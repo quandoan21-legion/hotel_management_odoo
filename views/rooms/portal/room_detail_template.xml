@@ -1,0 +1,103 @@
+<odoo>
+    <template id="portal_room_detail" name="Room Details">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4">
+                <!-- Breadcrumb Navigation -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/hotel/rooms">Rooms</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><t t-esc="room.name"/></li>
+                    </ol>
+                </nav>
+
+                <!-- Room Details Card -->
+                <div class="card">
+<!--                    <t t-if="room.image">-->
+<!--                        <img t-att-src="image_data_uri(room.image)" class="card-img-top" alt="Room Image"/>-->
+<!--                    </t>-->
+                    <div class="card-body">
+                        <h2 class="card-title"><t t-esc="room.name"/></h2>
+                        <p class="card-text">
+                            <strong>Price:</strong> <t t-esc="room.room_price"/> USD<br/>
+                            <strong>Bed Type:</strong> <t t-esc="room.bed_type"/><br/>
+                            <strong>Address:</strong> <t t-esc="room.hotel_address"/><br/>
+                            <strong>Status:</strong>
+                        </p>
+
+                        <!-- Booking Form -->
+                        <div>
+                            <h4>Book This Room</h4>
+                            <form action="/hotel/rooms/book" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="room_id" t-att-value="room.id"/>
+                                <div class="mb-3">
+                                    <label for="check_in_date">Check-in Date</label>
+                                    <input id="check_in_date" type="date" name="check_in_date" class="form-control"
+                                           t-att-min="datetime.date.today().strftime('%Y-%m-%d')"
+                                           required="required"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="check_out_date">Check-out Date</label>
+                                    <input id="check_out_date" type="date" name="check_out_date" class="form-control"
+                                           t-att-min="datetime.date.today().strftime('%Y-%m-%d')"
+                                           required="required"/>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Book Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Amenities Section -->
+<!--                <div t-if="room.amenities_ids" class="mt-4">-->
+<!--                    <h4>Room Amenities</h4>-->
+<!--                    <ul class="list-group">-->
+<!--                        <t t-foreach="room.amenities_ids" t-as="amenity">-->
+<!--                            <li class="list-group-item"><t t-esc="amenity.name"/></li>-->
+<!--                        </t>-->
+<!--                    </ul>-->
+<!--                </div>-->
+            </div>
+
+            <!-- CSS for unavailable dates -->
+            <style>
+                .unavailable-date {
+                    border: 2px solid red !important;
+                }
+            </style>
+
+            <!-- JavaScript to disable unavailable dates -->
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    var unavailableDates = <t t-raw="unavailable_dates"/>;
+                    var checkInDateInput = document.getElementById('check_in_date');
+                    var checkOutDateInput = document.getElementById('check_out_date');
+
+                    function disableUnavailableDates(input, unavailableDates) {
+                        input.addEventListener('input', function() {
+                            var selectedDate = this.value;
+                            if (unavailableDates.includes(selectedDate)) {
+                                this.setCustomValidity('This date is unavailable.');
+                                this.classList.add('unavailable-date');
+                            } else {
+                                this.setCustomValidity('');
+                                this.classList.remove('unavailable-date');
+                            }
+                        });
+                    }
+
+                    disableUnavailableDates(checkInDateInput, unavailableDates);
+                    disableUnavailableDates(checkOutDateInput, unavailableDates);
+
+                    checkInDateInput.addEventListener('change', function() {
+                        var checkInDate = new Date(this.value);
+                        var checkOutMinDate = new Date(checkInDate);
+                        checkOutMinDate.setDate(checkOutMinDate.getDate() + 1);
+
+                        checkOutDateInput.min = checkOutMinDate.toISOString().split('T')[0];
+                    });
+                });
+            </script>
+        </t>
+    </template>
+</odoo>
