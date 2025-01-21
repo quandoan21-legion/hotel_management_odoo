@@ -11,6 +11,10 @@
                 <field name="room_description" widget="many2many_tags"/>
                 <field name="bed_type"/>
                 <field name="hotel_id"/>
+                <!-- Adding a button in the list view header -->
+                <header>
+                    <button name="%(action_room_availability_wizard)d" string="Check Room Availability" type="action" class="btn-primary"/>
+                </header>
             </list>
         </field>
     </record>

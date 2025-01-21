@@ -25,6 +25,8 @@
         'security/ir.model.access.csv',
         'views/rooms/portal/room_template.xml',
         'views/rooms/portal/room_detail_template.xml',
+        'views/rooms/report/room_availability_wizard_views.xml',
+        'models/report/report_room_availability_template.xml',
         'views/room_orders/server_action/hotel_order_server_action.xml',
         'views/hotels/search/hotel_search_views.xml',
         'views/rooms/search/hotel_room_search_views.xml',

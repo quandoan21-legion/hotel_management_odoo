@@ -15,4 +15,9 @@ access_hotels_room_description_admin,hotels.room.description.admin,model_hotels_
 access_hotels_room_order_admin,hotels.room.order.admin,model_hotels_room_order,group_admin,1,1,1,1
 access_hotels_room_payment_admin,hotels.room.payment.admin,model_hotels_room_payment_wizard,group_admin,1,1,1,1
 
+access_hotels_room_portal,hotels.room.portal,model_hotels_room,base.group_portal,1,0,0,0
+access_hotels_hotel_portal,hotels.hotel.portal,model_hotels_hotel,base.group_portal,1,0,0,0
+access_hotels_room_description_portal,hotels.room.description.portal,model_hotels_room_description,base.group_portal,1,0,0,0
+access_hotels_room_order_portal,hotels.room.order.portal,model_hotels_room_order,base.group_portal,1,1,1,0
 
+access_room_availability_wizard_user,room.availability.wizard.user,model_room_availability_wizard,base.group_user,1,1,1,1
