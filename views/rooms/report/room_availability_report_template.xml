@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_room_availability">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <!-- Main Content -->
+                    <h2 class="text-center mb-4">Room Availability Report</h2>
+
+                    <!-- Loop through docs with debug info -->
+                    <t t-foreach="docs" t-as="wizard">
+                        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+                            <div class="alert alert-info">
+                                <strong>Debug:</strong> Processing wizard record <t t-esc="wizard.id"/>
+                            </div>
+
+                            <h4>Report Details</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <strong>Wizard ID:</strong> <t t-esc="wizard.id"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Record Created:</strong> <span t-field="wizard.create_date"/>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <strong>Start Date:</strong> <span t-field="wizard.start_date"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>End Date:</strong> <span t-field="wizard.end_date"/>
+                                </div>
+                            </div>
+
+                            <!-- Available Rooms with Debug Info -->
+                            <h4 class="mt-4">Available Rooms</h4>
+                            <div class="alert alert-info">
+                                <strong>Debug:</strong> Found <t t-esc="len(wizard.available_room_ids)"/> rooms
+                            </div>
+
+                            <table class="table table-sm table-bordered mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Room ID</th>
+                                        <th>Room Name</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if="wizard.available_room_ids">
+                                        <t t-foreach="wizard.available_room_ids" t-as="room">
+                                            <tr>
+                                                <td><t t-esc="room.id"/></td>
+                                                <td><t t-esc="room.name"/></td>
+                                                <td><t t-esc="room.room_price"/></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td colspan="3" class="text-center">
+                                                <em>No available rooms found</em>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+
+                    <!-- If no records found -->
+                    <t t-if="not docs">
+                        <div class="alert alert-warning">
+                            <strong>Debug:</strong> No wizard records found!
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_room_availability" model="ir.actions.report">
+        <field name="name">Room Availability Report</field>
+        <field name="model">room.availability.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hotel.report_room_availability</field>
+        <field name="report_file">hotel.report_room_availability</field>
+        <field name="binding_model_id" ref="model_room_availability_wizard"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Room Availability Report'</field>
+    </record>
+</odoo>
